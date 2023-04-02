@@ -66,5 +66,7 @@ const User = mongoose.model("users",UserSchema);
 
 
 
-module.exports=Postmodel;
-module.exports = User
+module.exports={
+    User:User,
+    Postmodel:Postmodel
+}

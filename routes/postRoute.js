@@ -1,7 +1,7 @@
 const express = require("express")
 const router = express.Router()
-const Postmodel = require("../model/postSchema");
-const User = require("../model/postSchema");
+const {Postmodel,User} = require("../model/postSchema");
+
 router.post("/addpost", async (req, resp) => {
     console.log(req.body)
     try {
