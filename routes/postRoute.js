@@ -3,9 +3,9 @@ const router = express.Router()
 const {Postmodel,User} = require("../model/postSchema");
 
 router.post("/addpost", async (req, resp) => {
-    console.log(req.body)
+    
     try {
-        const data = new Postmodel(
+        const data = await new Postmodel(
             {
                 name: req.body.name,
                 location: req.body.location,
@@ -13,7 +13,7 @@ router.post("/addpost", async (req, resp) => {
                 image: req.body.image
             }
         )
-        const result = await data.save()
+        const result = await data.save();
         resp.json(result)
     }
     catch (err) {
