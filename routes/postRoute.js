@@ -65,7 +65,11 @@ router.post("/login",async (req,res) =>{
         
         
         if(uservalid){
-            const isMatch = await bcrypt.compare(password,uservalid.password);
+            let  isMatch = false;
+            if(password === uservalid.password){
+
+                isMatch = true;
+            }
             
             
             if(!isMatch){
