@@ -58,7 +58,7 @@ router.post("/login",async (req,res) =>{
     
 
     if(!email||!password){
-        res.status(422).json({error:"fill all the details"})
+        res.status(422).json({status:422, error:"fill all the details"})
     }
     try{
         const uservalid = await User.findOne({email:email});
@@ -69,14 +69,14 @@ router.post("/login",async (req,res) =>{
             
             
             if(!isMatch){
-                res.status(403).json({error:"password not matched"})
+                res.status(403).json({ status:403,error:"password not matched"})
             }
             else{
                 
                 try{
                     const token =  await uservalid.generateAuthtoken();
                     
-                    console.log(token)
+                    
 
                 res.cookie("usercokie",token,{expires:new Date(Date.now()+9000000 ),httpOnly:true});
                 const result = {uservalid,token}
