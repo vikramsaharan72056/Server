@@ -54,7 +54,7 @@ router.post("/register", async (req, res) => {
 })
 const secretKey = "abcdefghijklmnopqrstuvwxyzabcdef";
 router.post("/login",async (req,res) =>{
-    let {email,password} = req.body;
+    const {email,password} = req.body;
     
 
     if(!email||!password){
@@ -65,9 +65,10 @@ router.post("/login",async (req,res) =>{
         
         
         if(uservalid){
-            password = bcrypt.hash(password,12)
-            
-            let  isMatch = password.localeCompare(uservalid.password);
+            let  isMatch = false;
+            if(password === uservalid.password){
+                isMatch = true
+            }
             
             
             if(!isMatch){

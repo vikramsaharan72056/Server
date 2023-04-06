@@ -67,11 +67,11 @@ const UserSchema = new mongoose.Schema({
 });
 
 
-UserSchema.pre("save",async function (next) {
-    this.password = await bcrypt.hash(this.password,12);
-    this.cpassword = await bcrypt.hash(this.cpassword,12);
-    next();
-})
+// UserSchema.pre("save",async function (next) {
+//     this.password = await bcrypt.hash(this.password,12);
+//     this.cpassword = await bcrypt.hash(this.cpassword,12);
+//     next();
+// })
 
 
 UserSchema.methods.generateAuthtoken = async function(){
