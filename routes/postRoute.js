@@ -61,7 +61,7 @@ router.post("/login", async (req, res) => {
     const uservalid = await User.findOne({ email: email });
 
     if (!uservalid) {
-      res.status(405).json({ status: 405, error: "user not found" });
+      res.json({ status: 405, error: "user not found" });
     } else {
       let isMatch = false;
       if (password === uservalid.password) {
