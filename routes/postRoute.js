@@ -68,8 +68,6 @@ router.post("/login",async (req,res) =>{
             let  isMatch = false;
             if(password === uservalid.password){
                 isMatch = true
-            }else{
-                res.status(405).json({status:405,error:"user does not exist"})
             }
             
             
@@ -92,7 +90,9 @@ router.post("/login",async (req,res) =>{
                     res.json(err.message)
                 }
             }
-        }
+        }else{
+                res.status(405).json({status:405,error:"user does not exist"})
+            }
     }catch(err){
       res.json(err.message);
     }
